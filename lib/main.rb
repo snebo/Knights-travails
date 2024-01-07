@@ -9,11 +9,10 @@ class Square
     @x = x
     @y = y
     @parent = parent
-    # @children = []
   end
 end
 
-def create_children(board)
+def find_moves(board)
   possible_moves = []
   # creates future moves using knight moveset
   possible_moves.push(
@@ -42,14 +41,14 @@ def search_algo(value, children)
   # searches the tree until the value is met, and adds to the curr
   return show_path(children) if [children.x, children.y] == value
 
-  que = create_children(children)
+  que = find_moves(children)
   loop do
     curr = que.shift
     if [curr.x, curr.y] == value
       show_path(curr)
       break
     else
-      create_children(curr).each {|chd| que << chd}
+      find_moves(curr).each {|chd| que << chd}
     end
   end
 end
