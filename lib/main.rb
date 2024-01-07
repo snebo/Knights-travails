@@ -35,14 +35,14 @@ end
 def knigh_move(start, destination)
   # create the root node
   start_child = Square.new(start[0], start[1])
-  create_children(start_child) # create future moves
-
-  search_algo(destination, @children)
+  search_algo(destination, start_child)
 end
 
 def search_algo(value, children)
-  # searches the tree until the value is met, and adds to curr
-  que = children
+  # searches the tree until the value is met, and adds to the curr
+  return show_path(children) if [children.x, children.y] == value
+
+  que = create_children(children)
   loop do
     curr = que.shift
     if [curr.x, curr.y] == value
