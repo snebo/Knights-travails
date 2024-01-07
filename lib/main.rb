@@ -9,7 +9,7 @@ class Square
     @x = x
     @y = y
     @parent = parent
-    @children = []
+    # @children = []
   end
 end
 
@@ -29,7 +29,7 @@ def create_children(board)
   possible_moves = possible_moves.map do |position|
     Square.new(position[0], position[1], board)
   end
-  @children = possible_moves # saving the possible moves to the move
+  possible_moves # saving the possible moves to the move
 end
 
 def knigh_move(start, destination)
@@ -68,3 +68,4 @@ def show_path(curr)
 end
 
 knigh_move([0, 0], [7, 7])
+knigh_move([1, 1], [1, 1])
